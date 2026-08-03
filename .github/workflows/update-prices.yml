@@ -1,0 +1,57 @@
+name: Opdater elpriser
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Kører flere gange dagligt, men ikke ved hel time.
+    # Tidszonen gør planen robust over for sommer- og vintertid.
+    - cron: "17 9,11,13,15 * * *"
+      timezone: "Europe/Copenhagen"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-electricity-prices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      # Skift til DK2, hvis du bor øst for Storebælt.
+      PRICE_AREA: DK1
+
+    steps:
+      - name: Hent repository
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Generér prisfiler
+        run: python generate_prices.py
+
+      - name: Kontrollér resultat
+        run: |
+          test -f docs/status.json
+          test "$(find docs -name '20??-??-??-??.txt' | wc -l)" -ge 12
+          cat docs/status.json
+
+      - name: Gem ændringer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+
+          if git diff --cached --quiet; then
+            echo "Ingen ændringer at gemme."
+          else
+            git commit -m "Opdater elpriser"
+            git push
+          fi
