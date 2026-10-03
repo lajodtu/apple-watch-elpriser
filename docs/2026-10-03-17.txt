@@ -1,10 +1,5 @@
 Elpris – næste 12 timer
 DK1 · spotpris inkl. moms
-12–13: 0,78 kr./kWh
-13–14: 0,51 kr./kWh
-14–15: 0,64 kr./kWh
-15–16: 1,06 kr./kWh
-16–17: 1,47 kr./kWh
 17–18: 1,81 kr./kWh
 18–19: 2,13 kr./kWh
 19–20: 2,22 kr./kWh
@@ -12,3 +7,8 @@ DK1 · spotpris inkl. moms
 21–22: 2,01 kr./kWh
 22–23: 1,95 kr./kWh
 23–00: 1,82 kr./kWh
+00–01: 1,81 kr./kWh
+01–02: 1,76 kr./kWh
+02–03: 1,71 kr./kWh
+03–04: 1,68 kr./kWh
+04–05: 1,65 kr./kWh
