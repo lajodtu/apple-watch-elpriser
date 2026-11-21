@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-20T17:58:49.454422+01:00",
+  "generated_at": "2026-11-21T17:10:48.704546+01:00",
   "price_area": "DK1",
   "vat_included": true,
   "hourly_prices_found": 72,
   "message_files_created": 61,
-  "first_price": "2026-11-19T00:00:00+01:00",
-  "last_price": "2026-11-21T23:00:00+01:00"
+  "first_price": "2026-11-20T00:00:00+01:00",
+  "last_price": "2026-11-22T23:00:00+01:00"
 }
